@@ -3,13 +3,13 @@ title: "Linear Discriminant Analysis"
 output: github_document
 ---
 
-The LDA algorithm starts by finding directions that maximize the separation between classes, then use these directions to predict the class of individuals. These directions, called linear discriminants, are a linear combinations of predictor variables.
+Linear discriminant analysis (LDA) and the related Fisher’s linear discriminant are methods used in statistics, pattern recognition and machine learning to find a linear combination of features which characterizes or separates two or more classes of objects or events. The resulting combination may be used as a linear classifier, or, more commonly, for dimensionality reduction before later classification.
 
 LDA assumes that predictors are normally distributed (Gaussian distribution) and that the different classes have class-specific means and equal variance/covariance.
 
 The linear discriminant analysis can be easily computed using the function lda() [MASS package].
 
-```{r setup, include=TRUE}
+```{r setup, include=TRUE,warning=FALSE}
 library(datasets)
 library(MASS)
 library(ggplot2)
@@ -33,7 +33,10 @@ The lda() outputs contain the following elements:
 
 Prior probabilities of groups: the proportion of training observations in each group. For example, there are 31% of the training observations in the setosa group
 Group means: group center of gravity. Shows the mean of each variable in each group.
-Coefficients of linear discriminants: Shows the linear combination of predictor variables that are used to form the LDA decision rule. for example, LD1 = 0.91*Sepal.Length + 0.64*Sepal.Width - 4.08*Petal.Length - 2.3*Petal.Width. Similarly, LD2 = 0.03*Sepal.Length + 0.89*Sepal.Width - 2.2*Petal.Length - 2.6*Petal.Width.
+
+Coefficients of linear discriminants: Shows the linear combination of predictor variables that are used to form the LDA decision rule. for example, LD1 = 0.82*Sepal.Length + 1.53*Sepal.Width - 2.2*Petal.Length - 2.8*Petal.Width. Similarly, LD2 = 0.024*Sepal.Length + 2.164*Sepal.Width - 0.93*Petal.Length + 2.83*Petal.Width.
+
+The “proportion of trace” returned by the lda() function is the percentage separation achieved by each discriminant function.  (99.12% and 0.88%).
 
 ```{r lda2}
 lda.fit
