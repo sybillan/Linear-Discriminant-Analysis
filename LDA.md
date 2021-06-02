@@ -84,10 +84,13 @@ in the setosa group Group means: group center of gravity. Shows the mean
 of each variable in each group.
 
 Coefficients of linear discriminants: Shows the linear combination of
-predictor variables that are used to form the LDA decision rule. for
-example, LD1 = 0.82*Sepal.Length + 1.53*Sepal.Width - 2.2*Petal.Length -
-2.8*Petal.Width. Similarly, LD2 = 0.024*Sepal.Length + 2.164*Sepal.Width
-- 0.93*Petal.Length + 2.83*Petal.Width.
+predictor variables that are used to form the LDA decision rule.
+
+for example, LD1 = 0.82*Sepal.Length + 1.53*Sepal.Width -
+2.2*Petal.Length - 2.8*Petal.Width.
+
+Similarly, LD2 = 0.024*Sepal.Length + 2.164*Sepal.Width -
+0.93*Petal.Length +2.83*Petal.Width.
 
 The “proportion of trace” returned by the lda() function is the
 percentage separation achieved by each discriminant function. (99.12%
