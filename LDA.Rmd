@@ -3,6 +3,12 @@ title: "Linear Discriminant Analysis"
 output: github_document
 ---
 
+The LDA algorithm starts by finding directions that maximize the separation between classes, then use these directions to predict the class of individuals. These directions, called linear discriminants, are a linear combinations of predictor variables.
+
+LDA assumes that predictors are normally distributed (Gaussian distribution) and that the different classes have class-specific means and equal variance/covariance.
+
+The linear discriminant analysis can be easily computed using the function lda() [MASS package].
+
 ```{r setup, include=TRUE}
 library(datasets)
 library(MASS)
@@ -20,7 +26,14 @@ summary(iris)
 lda.fit<-lda(Species~.,data=iris)
 ```
 
-Performing Linear Discriminant Analysis on Iris dataset for classification per Species
+Performing Linear Discriminant Analysis on Iris dataset for classification per Species.
+LDA determines group means and computes, for each individual, the probability of belonging to the different groups. The individual is then affected to the group with the highest probability score.
+
+The lda() outputs contain the following elements:
+
+Prior probabilities of groups: the proportion of training observations in each group. For example, there are 31% of the training observations in the setosa group
+Group means: group center of gravity. Shows the mean of each variable in each group.
+Coefficients of linear discriminants: Shows the linear combination of predictor variables that are used to form the LDA decision rule. for example, LD1 = 0.91*Sepal.Length + 0.64*Sepal.Width - 4.08*Petal.Length - 2.3*Petal.Width. Similarly, LD2 = 0.03*Sepal.Length + 0.89*Sepal.Width - 2.2*Petal.Length - 2.6*Petal.Width.
 
 ```{r lda2}
 lda.fit
@@ -32,7 +45,12 @@ ggplot(iris, aes(LD1, LD2)) +
   geom_point(aes(color = Species))
 ```
 
-Reference:
+References:
 https://towardsdatascience.com/linear-discriminant-analysis-in-python-76b8b17817c2#:~:text=Linear%20Discriminant%20Analysis%20(LDA)%20is,as%20much%20information%20as%20possible.
 
 https://www.displayr.com/linear-discriminant-analysis-in-r-an-introduction/
+
+http://www.sthda.com/english/articles/36-classification-methods-essentials/146-discriminant-analysis-essentials-in-r/
+
+James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. 2014. An Introduction to Statistical Learning: With Applications in R. Springer Publishing Company, Incorporated.
+
