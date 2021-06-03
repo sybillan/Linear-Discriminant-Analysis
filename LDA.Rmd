@@ -31,8 +31,8 @@ LDA determines group means and computes, for each individual, the probability of
 
 The lda() outputs contain the following elements:
 
-Prior probabilities of groups: the proportion of training observations in each group. For example, there are 31% of the training observations in the setosa group
-Group means: group center of gravity. Shows the mean of each variable in each group.
+Prior probabilities of groups: the proportion of training observations in each group. For example, there are 33% of the training observations in the setosa group
+Group means: group center of gravity. Average of each predictor within each class.
 
 Coefficients of linear discriminants: Shows the linear combination of predictor variables that are used to form the LDA decision rule. 
 
@@ -48,10 +48,17 @@ plot(lda.fit)
 
 predictions <- lda.fit %>% predict(iris)
 iris <- cbind(iris, predict(lda.fit)$x)
+
 ggplot(iris, aes(LD1, LD2)) +
   geom_point(aes(color = Species))
 ```
+```{r}
+predict(lda.fit,iris)
 
+
+```
+
+Predict() function returns a list with three elements: class, which class the observation belongs to, posterior probability that the observation belongs to kth class and x that contains the linear discriminants.
 References:
 https://towardsdatascience.com/linear-discriminant-analysis-in-python-76b8b17817c2#:~:text=Linear%20Discriminant%20Analysis%20(LDA)%20is,as%20much%20information%20as%20possible.
 
